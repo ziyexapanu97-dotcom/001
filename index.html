@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atendimento Online</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #f4fbf7, #e9f9f2);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(0, 200, 100, 0.08);
+      z-index: 0;
+    }
+
+    .circle.small {
+      width: 60px;
+      height: 60px;
+      bottom: 10%;
+      left: 8%;
+    }
+
+    .circle.large {
+      width: 120px;
+      height: 120px;
+      top: 15%;
+      right: 10%;
+    }
+
+    .container {
+      position: absolute;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      padding: 40px 30px;
+      text-align: center;
+      z-index: 1;
+      transition: all 0.6s ease;
+    }
+
+    #page1 {
+      width: 522px;
+      height: 708px;
+    }
+
+    #page2 {
+      width: 399px;
+      height: 647px;
+    }
+
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.95);
+    }
+
+    .visible {
+      opacity: 1;
+      pointer-events: all;
+      transform: scale(1);
+    }
+
+    .icon {
+      font-size: 24px;
+      color: #0a8f5c;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      color: #0a8f5c;
+      margin-bottom: 20px;
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #a6e1c2;
+      object-fit: cover;
+      margin: 20px auto;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 30px;
+      font-size: 15px;
+    }
+
+    button {
+      background: linear-gradient(135deg, #00995e, #00b06f);
+      border: none;
+      color: white;
+      padding: 14px 40px;
+      border-radius: 40px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #00b06f, #00c67a);
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .footer a {
+      color: #007b5e;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .progress {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: #007b5e;
+      margin-bottom: 15px;
+    }
+
+    .progress-step {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #00b06f;
+      color: white;
+      font-weight: bold;
+    }
+
+    input {
+      width: 80%;
+      padding: 12px;
+      border-radius: 30px;
+      border: 2px solid #a6e1c2;
+      margin: 20px auto;
+      font-size: 15px;
+      outline: none;
+      text-align: center;
+      color: #333;
+    }
+
+    .safe-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      color: #007b5e;
+      font-size: 13px;
+      margin-top: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="circle small"></div>
+  <div class="circle large"></div>
+
+  <div id="page1" class="container visible">
+    <div class="icon">📞 Atendimento Online</div>
+    <h2>Como podemos ajudar<br>você hoje?</h2>
+    <img class="profile-img" src="https://i.pinimg.com/1200x/9c/72/2d/9c722d3e8aa45cf31ea21bda43776135.jpg" alt="Atendente">
+    <p>Preencha o formulário abaixo e entraremos em contato com você o mais breve possível.</p>
+    <button onclick="nextPage()">Iniciar Atendimento</button>
+    <div class="footer">
+      <a href="#">Política de Privacidade</a> |
+      <a href="#">Termos de Uso</a>
+    </div>
+  </div>
+
+  <div id="page2" class="container hidden">
+    <div class="progress">
+      <div class="progress-step">✔</div>
+      <span>Início</span>
+      <span>—</span>
+      <div class="progress-step">2</div>
+      <span>Contato</span>
+    </div>
+
+    <img class="profile-img" src="https://i.pinimg.com/1200x/9c/72/2d/9c722d3e8aa45cf31ea21bda43776135.jpg" alt="Atendente">
+
+    <h2 style="color:#023b29; font-size:22px;">Olá! Sou sua atendente</h2>
+    <p style="margin-top:8px;">Digite seu nome para começarmos</p>
+
+    <input type="text" placeholder="Digite seu nome">
+
+    <button onclick="entrarNoChat()">Entrar no Chat</button>
+
+    <div class="safe-text">🔒 Seus dados estão seguros conosco</div>
+  </div>
+
+  <script>
+    function nextPage() {
+      const page1 = document.getElementById('page1');
+      const page2 = document.getElementById('page2');
+      page1.classList.remove('visible');
+      page1.classList.add('hidden');
+      page2.classList.remove('hidden');
+      page2.classList.add('visible');
+    }
+
+    function entrarNoChat() {
+      // 🔗 AQUI VOCÊ TROCA SEU LINK
+      window.location.href = "https://imosepuraku356-design.github.io/feirao/inicio/";
+    }
+  </script>
+</body>
+</html>
